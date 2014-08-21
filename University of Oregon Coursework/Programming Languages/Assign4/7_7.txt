@@ -1,0 +1,7 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.7
+*)
+
+(a) 2
+(b) 3
+(c) 1

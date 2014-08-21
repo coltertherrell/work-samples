@@ -1,0 +1,22 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.6
+*)
+
+pseudocode
+
+val x = ref 0;
+fun p(y : int ref) = 
+	let
+		val x = ref 0
+	in
+		y := 1
+		x := 0
+	end;
+p(x);
+
+In this function we declare a local reference to x so that we can change
+in the scope of the function without changing the value of our original
+x. On the other hand, as we are passing a reference to x into the function
+as the value y, when we change y we are accessing the same address in
+memory and changing the value so the original x reference will reflect the
+change.

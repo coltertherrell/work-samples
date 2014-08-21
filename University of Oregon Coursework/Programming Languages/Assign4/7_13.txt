@@ -1,0 +1,22 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.13
+*)
+
+(a) 
+x = int
+f = int -> (int -> int)
+h = fn : int -> int
+
+(b)
+attached in seperate file
+
+(c)
+It will return the value 10. This is because h is a function that takes an
+int w and returns w+3+5. This is as when h is initialized it first sets
+x = 7 locally and then calls f(3). f(3) returns a funtion that takese an
+int w and returns w+x+3. Thus the only problem is to determine x in the
+scope of f. As it is statically scoped it uses the closure to point to
+the value of x which points to access link 1. Thus it uses the value
+of 5 for x even though x was declared as 7 in h's local scope.
+
+

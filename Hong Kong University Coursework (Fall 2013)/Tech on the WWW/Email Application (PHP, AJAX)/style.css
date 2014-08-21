@@ -1,0 +1,83 @@
+#header
+{
+	height:50px;
+	width:auto;
+	background-color:#7FFF00;
+	border-style:ridge;
+	border-color:#d3d3d3;
+}
+
+body
+{
+	background-color:#d3d3d3
+}
+
+#head_p
+{
+	font-family:Georgia, serif;
+	margin-left:20px;
+	margin-bottom:10px;
+}
+
+#spacer
+{
+	height:10px;
+	width:auto;
+}
+
+#func_btn
+{
+	margin-top:20px;
+	height:40px;
+	width:75%;
+	background-color:#FFFFFF;
+	border-style:double;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+button
+{
+	margin-left:20px;
+	margin-right:10px;
+}
+
+#main_row
+{
+	height:80%;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#FFFFFF;
+	border-style:double;
+	margin-top:20px;
+}
+
+#menu_bar
+{
+	height:auto;
+	width:30%;
+	border-style:inset;
+	border-color:#000000;
+}
+
+#email_field
+{
+	height:auto;
+	width:auto;
+	border-style:double;
+}
+
+table
+{
+	width:1000px;
+	height:auto;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.display_mail
+{
+	border-spacing:20px;
+	margin-bottom:10px;
+}

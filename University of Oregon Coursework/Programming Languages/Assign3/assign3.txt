@@ -1,0 +1,77 @@
+Sam Vitello
+CIS 425
+Assignment 3 written problems
+
+4.2
+	The type of this function should be:
+	('a * 'a -> bool) * 'a list -> 'a list
+	
+	This is because the function takes as arguments a function less, which takes 
+	two objects of polymorphic type 'a and returns a bool ('a * 'a -> bool) and 
+	a list of type 'a and returns a list of type 'a. The function insert takes
+	two arguments: polymorphic object 'a and a list of type 'a and returns a list
+	of type 'a.
+
+4.5
+
+	lambda(g,h).((+(g(h)))2)	= r
+	(g,h).						= a * b
+		((+(g(h)))2)			= s
+		(+(g(h)))				= q
+				2				= int
+		+						= int -> (int -> int)
+		(g(h))				= w
+		g					= a
+		h					= b
+		
+	Constraints:
+	a = b -> w
+	int -> (int -> int) = w -> q
+	q = int -> s
+	r = (a * b) ->  s
+	
+	int -> (int -> int) = w -> int -> s => w = int and s = int
+	
+	r = (b -> w) * b -> s  <==> r = (b -> int) * b -> int
+	
+	Thus the type of the function f is:
+	('a -> int) * 'a -> int
+
+4.6
+
+	lambda(g).((+(g(g)))2)		= r
+	(g).						= a * a
+		((+(g(g)))2)			= s
+		(+(g(g)))				= q
+				2				= int
+		+						= int -> (int -> int)
+		(g(g))				= w
+		g					= a
+		g					= a
+	   
+	Constraints:
+	a = a -> w
+	int -> (int -> int) = w -> q
+	q = int -> s
+	r = (a * a) ->  s
+
+	int -> (int -> int) = w -> int -> s => w = int and s = int
+	=> a = a -> int
+	
+	This is an error as it implies that a is an int but an int is a not a function.
+	Therefore there is a type error.
+
+4.7
+	
+	The type of this function is 'a list * 'b -> 'b. This is because it takes a list of 
+	polymorphic type 'a as the first argument and object of polymorphic type 'b as the
+	second argument and iterates through the list until we have reached the  last item
+	and then it returns the second argument. This is the bug. This is because the base 
+	case simply returns the second list instead of adding the list to the end of the first 
+	list. We can see this from the type as it would specify that it is returning an 'a list
+	if we added the second list to the first. Also we can see it has a bug because it allows
+	us to use two differently typed objects as arguments and it would be a type error if
+	we tried to append two lists of different types so the two lists must not be interacting
+	in our function.
+	   
+	   

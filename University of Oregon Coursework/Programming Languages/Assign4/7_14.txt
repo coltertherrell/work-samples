@@ -1,0 +1,20 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.14
+*)
+
+(a) attached separately
+
+(b) The function will return 1. This is because when the function recurse(n)
+is initialized a closure is created that points myop(x,y) declard in line
+1. Thus even though we locally create another function called myop(x,y)
+after we call recurse(1) the access link points to the first declaration of
+myop so in static scope whenever we call recurse(n) we will use the
+first declaration of myop().
+
+(c) If it was in dynamic scoping then the value would be 2 as we would
+use the second declaration of myop(). This is because when we call
+recurse(1) we would follow the control links back up the stack and use the
+most recent declaration of myop() on the stack. Thus our diagram would
+be changed as we would simply have arrows pointing back up the stack
+connecting the control links of the previous activation record on the 
+stack.

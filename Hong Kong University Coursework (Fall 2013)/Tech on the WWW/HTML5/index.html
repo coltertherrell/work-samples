@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<link rel="stylesheet" type="text/css" href="card_style.css">
+			<title>Season's Greetings Card</title>
+		</head>
+		<body onload="load_imgs()">
+			<div id="pictures">
+				<img src="snowman.png" id="snowman"/>
+				<img src="santa.png" id="santa" />
+			</div>
+			<div>
+				<canvas onmouseover="move_imgs()" onmouseout="stop_imgs()" id="myCanvas" width="600" height="400" align="center" valign="center" />
+			</div>
+			<div id="input">
+					<input type="text" name="usr_inpt" id="inpt">
+					<button id="inpt_btn" onclick="show_txt()">Display</button>
+			</div>
+		</body>
+		<script type="text/javascript">
+			var snowman_x= 500;
+			var snowman_y= 200;
+			var santa_x= 0;
+			var santa_y= 20;
+			var c=document.getElementById("myCanvas");
+			var santa=document.getElementById("santa");	
+			var snowman=document.getElementById("snowman");
+			var loop;
+			var dir = 1;
+			var txt = "";
+			
+			function load_imgs(){
+				var ctx=c.getContext("2d");
+				ctx.clearRect(0,0,600,400);
+				ctx.font="30px Arial";
+				ctx.strokeText(txt,200,200);
+				ctx.drawImage(santa, santa_x, santa_y);
+				ctx.drawImage(snowman, snowman_x, snowman_y);	
+			}
+			
+			function move_imgs(){
+				loop = setInterval("move()",50);
+			}
+			
+			function move(){
+				if (dir == 1){
+					snowman_x -= 2;
+				}
+				else{
+					snowman_x += 2;
+				}
+				if (snowman_x == 300)
+					dir = 0;
+				else if (snowman_x == 550)
+					dir = 1;
+				santa_x += 10;
+				if (santa_x >= 600){
+					santa_x=0;
+					santa_y=20;
+					}
+				else{
+					if (santa_x <= 200)
+						santa_y -= 1;
+					else
+						santa_y += 1;
+					}
+				load_imgs();
+			}
+			
+			function stop_imgs(){
+				clearInterval(loop);
+			}
+			
+			function show_txt(){
+				txt = document.getElementById("inpt").value;
+				load_imgs();
+			}
+			
+		</script>
+	</html>

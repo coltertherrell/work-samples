@@ -1,0 +1,8 @@
+City Locations:
+Riverrun (540,10)
+Golden Tooth (320,200)
+Silverhill (325,510)
+Stony Sept (610,290)
+Harrenhal (850,90)
+Maidenpool (1130,120)
+Kings Landing (1050, 490)

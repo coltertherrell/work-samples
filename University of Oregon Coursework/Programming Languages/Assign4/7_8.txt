@@ -1,0 +1,18 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.8
+*)
+
+(a) The value of x + y(x) is 16. The first time x is called is in line
+4. The value of x in this case is 7 because x is set to 7 locally and
+x + f(x) is in the same block. Thus y(x) in line 5 is also y(7) for the 
+same reasons. Then in line 2 x has a value of 2 as under static scoping
+x is defined as 2 in line 1 and the control link points to the outer block
+where x was set to 2. Thus y(7) returns 9 and the end result is 7 + 9 which
+is equal to 16.
+
+(b) Under dynamic scoping the value of x + y(x) is 21. x is assigned at 
+first on the stack, followed by the activation record for f(y) which
+defines x locally. Thus in line 4 the value of x is 7. Then in line 5
+f(x) still uses the local value so it calls f(7). It follows the control
+link back to when f(y) is defined and uses the most recent assignment of
+x so x is still 7 in line 2. So it returns 14 and in total it returns 21.

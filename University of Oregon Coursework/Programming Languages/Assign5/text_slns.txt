@@ -1,0 +1,15 @@
+Sam Vitello
+CIS 425
+Assignment 5
+Text Solutions
+
+(1)
+	a. AST_NUM 123
+	b. AST_APP (AST_FUN ("x", AST_IF "x"), AST_NUM 123)
+	c. AST_IF (AST_APP(AST_ISZERO,AST_ID "x"),AST_ID "x",AST_NUM 0)
+
+(5) If the input to the interpreter was type checked before it was passed then it would
+	be unnecessary to have some of the nested case options such as the "|_ => typeError"
+	because we would know that our types would match up beforehand. Also we could make our
+	functions polymorphic as we would be insured that only the correct types will be
+	passed to be interpreted.

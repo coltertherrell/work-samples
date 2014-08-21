@@ -1,0 +1,41 @@
+Sam Vitello
+CIS 425
+Assignment 6
+
+
+8.1
+	a) 0
+		In this case the exception gets raised the second time pred is called.
+		As it uses dynamic scope the function refers to the last defined 
+		version of handle Excpt(x) which returns x.
+	b) 1
+		The call of first call of dumb(x) raises the exception Excpt(1) which
+		as defined in twice(f,x) returns 1. Then it calls dumb again which
+		again raises an exception Excpt(1) which again returns 1.
+	c) 1
+		This function call initially calls smart(0) which calls pred(0). As it
+		uses dynamic scope it follows the control link back the declaration
+		of handle Except(x) defined in twice and thus returns 0. Then smart
+		adds 1 + 0 and returns one. Next smart(1) is called. This in turn calls
+		pred(1) which returns 1-1 = 0. Thus smart returns 1 + 0 = 1.
+
+8.2
+	This function will properly return g(nil) because once the exception
+	is raised the function is popped off the stack so tl(nil) is never evaluated
+	in the case of an empty list.
+
+8.4
+	call f(5) : assign handle Odd => -5
+	call f(3)
+	call f(1)
+	raise Odd
+	pop activation record off of the stack
+	handle Odd
+	return -5
+
+8.5
+	No. The problem is that OddNum could be raised before the handler has
+	been declared. If this happens then the activation record will be
+	popped off of the stack and the declaration of handle OddNum will be lost.
+	In order to resolve this issue we could simply have f(1,count) = -1.
+	

@@ -1,0 +1,58 @@
+    body {
+	width: 240px;
+	height: 480px;
+	background-image:url('theme.png');
+	background-size:20%;
+	background-repeat:no-repeat;
+	font-family: helvetica, Arial, Verdane, sans-serif;
+	
+    }
+
+    p {
+	word-wrap:break-word;
+	font-family: sans-serif;
+    }
+
+    div {
+	display: block !important;
+    }
+
+    div#Checklist {
+	position: absolute;
+	left:20px;
+	top: 150px;
+	width: 340px;
+	height: 460px;
+	overflow-x: hidden;
+	overflow-y: auto;
+    }
+    
+    div.note {
+	width: 320px;
+    }
+
+    #more {
+	position: absolute;
+	left:90px;
+	width:150px;
+	height:40px;
+	text-align: center;
+	background-color: #cccccc;
+	
+    }
+
+    span {
+	text-align: center;
+	padding: 2px;
+	font-weight: bold;
+    }
+
+    h3 {
+	display: inline;
+	color: #0000ff;
+    }
+
+    h5 {
+	display: inline;
+	color: #cccccc;
+    }

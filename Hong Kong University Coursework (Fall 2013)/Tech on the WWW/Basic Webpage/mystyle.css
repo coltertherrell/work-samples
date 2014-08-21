@@ -1,0 +1,127 @@
+*	
+{
+
+	margin : 0px 0px 0px 0px;
+}
+
+
+.header
+{
+		
+	width:900px;
+	height:220px;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url("images/web_banner.jpg");
+	background-repeat:no-repeat;
+}
+
+table
+{
+	width:900px;
+	border:2px solid #000000;
+	border-collapse:collapse;
+	margin:auto;
+}
+
+td
+{
+border:2px solid #000000;
+}
+
+
+#layered
+{
+	background-color:#bfcada;
+}
+
+#menu ul {
+	text-align:center;
+	font-size:180%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#bfcada;
+	width:400px;
+	border:2px solid #000000;
+}
+
+#menu li
+{
+	display:inline;
+	padding:20px;
+	
+}
+
+.home
+{
+	background:url("images/home.png") no-repeat top left;
+	padding-left:60px;
+	list-style-type:none;
+	display:inline;
+	padding:20px;
+}
+
+.divider
+{
+    width:auto;
+    height:8px;
+    display:inline-block;
+}
+
+
+h1
+{
+	text-align:center;
+	background-color:#bfcada;
+	width:900px;
+	height:auto;
+	color:#000000;
+	margin-left:auto;
+	margin-right:auto;
+	border:2px solid #000000;
+}
+
+body
+{
+	background-image:url("images/background_square.png");
+	background-repeat:repeat-x repeat-y;
+	height: 100%;
+}
+
+#pic_box
+{
+	width:280px;
+	height:auto;
+	
+}
+
+#month_head
+{
+	text-align:left;
+	font-size:100%;
+	color:#7f0000;
+	text-decoration:underline;
+	height:30px;
+	background-color:#bfcada;
+	width:900px;
+}
+
+#content
+{
+	font-size:130%;
+	font-style:regular;
+}
+
+#footer
+{
+	font-size:12px;
+	color:#000000;
+	text-align:center;
+	margin-top:5em;
+}
+
+.italic
+{
+	font-style:italic;
+	text-decoration:none;
+}

@@ -1,0 +1,18 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.4
+*)
+
+a) In order for the function to set c = a^2 the function would have
+to utilize call by value. If the function uses call by reference than
+we would be passing two references to the same object as the first 
+two parameters and this would cause aliasing. Thus every time through
+the loop the value of x would be decreased and the result would be 
+c = a! instead of c = a^a.
+
+b) Again we will have to deassign values a and c and pass them using
+call by value to the nested function power(a,a,c) for the same reason
+as above. Also as a and c are aliases if we pass them as references
+the first thing power will do is set c := 1 which will result in the
+program returning 1 every time as the value for reference a will also
+return 1.
+

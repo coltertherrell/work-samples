@@ -1,0 +1,7 @@
+(*Author: Sam Vitello
+CIS 425 Assignment 4 Problem 7.15
+*)
+
+C does not require closures because you cannot return a function
+from another higher order function so the scope is always
+encompassed in the function and there are no need for closures.

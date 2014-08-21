@@ -1,0 +1,270 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html; Charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<title>Email Application</title>
+	</head>
+	<body onload="show_in()">
+		<div id="header"><h2 id="head_p" valign="center">Sam-mail</h2></div>
+		<div id="func_btn" align="center" valign="center">
+			<button type="button" id="delete" onclick="move('trash')">Delete</button>
+			<button type="button" id="delete_forever" onclick="move('forever')">Delete Forever</button>
+			<button type="button" id="move_imp" onclick="move('important')">Move to Important</button>
+			<button type="button" id="move_inbox" onclick="move('inbox')">Move to Inbox</button>
+			<button type="button" id="prev" onclick="prev_5()"><</button>
+			<button type="button" id="next" onclick="next_5()">></button>
+		</div>
+		<table align="center">
+			<tr id="main_row" align="center">
+				<td id="menu_bar" valign="top">
+					<h4 id="inbox" onclick="show_in()" style='cursor:pointer;'>Inbox</h4><br>
+					<h4 id="important" onclick="show_imp()" style='cursor:pointer;'>Important</h4><br>
+					<h4 id="trash" onclick="show_trash()" style='cursor:pointer;'>Trash</h4><br>
+				</td>
+				<td id="email_field">
+					<table id="email">
+					<div id='test'></div>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+	
+	<script type="text/javascript">
+		var cur_inbox=0;
+		var cur_trash=0;
+		var cur_imp=0;
+		var inbox = false;
+		var trash = false;
+		var important = false;
+		function show_in(){
+			cur_inbox=0;
+			var xmlhttp;
+			inbox = true;
+			trash = false;
+			important = false;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+					document.getElementById("inbox").style.color='#7fff00';
+					document.getElementById("trash").style.color='#000000';
+					document.getElementById("important").style.color='#000000';
+					document.getElementById("move_inbox").style.visibility="hidden";
+					document.getElementById("move_imp").style.visibility="visible";
+					document.getElementById("delete_forever").style.visibility="hidden";
+					document.getElementById("delete").style.visibility="visible";
+					document.getElementById("move_inbox").disabled=false;
+					document.getElementById("move_imp").disabled=false;
+					document.getElementById("delete_forever").disabled=false;
+					document.getElementById("delete").disabled=false;
+					document.getElementById("prev").disabled=false;
+					document.getElementById("next").disabled=false;
+				}
+			}
+			
+			xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "inbox" +"&page=" + cur_inbox, true);
+			xmlhttp.send();
+		}
+
+		function show_imp(){
+			cur_imp = 0;
+			inbox = false;
+			trash = false;
+			important = true;
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+					document.getElementById("inbox").style.color="#000000";
+					document.getElementById("trash").style.color="#000000";
+					document.getElementById("important").style.color="#7FFF00";
+					document.getElementById("move_inbox").style.visibility="visible";
+					document.getElementById("move_imp").style.visibility="hidden";
+					document.getElementById("delete_forever").style.visibility="hidden";
+					document.getElementById("delete").style.visibility="visible";
+					document.getElementById("move_inbox").disabled=false;
+					document.getElementById("move_imp").disabled=false;
+					document.getElementById("delete_forever").disabled=false;
+					document.getElementById("delete").disabled=false;
+					document.getElementById("prev").disabled=false;
+					document.getElementById("next").disabled=false;
+				}
+			}
+			
+			xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "important" +"&page=" + cur_imp, true);
+			xmlhttp.send();
+		}
+
+		function show_trash(){
+			cur_trash=0;
+			inbox = false;
+			trash = true;
+			important = false;
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+					document.getElementById("inbox").style.color="black";
+					document.getElementById("trash").style.color='#7fff00';
+					document.getElementById("important").style.color="black";
+					document.getElementById("move_inbox").style.visibility="visible";
+					document.getElementById("move_imp").style.visibility="visible";
+					document.getElementById("delete_forever").style.visibility="visible";
+					document.getElementById("delete").style.visibility="hidden";
+					document.getElementById("move_inbox").disabled=false;
+					document.getElementById("move_imp").disabled=false;
+					document.getElementById("delete_forever").disabled=false;
+					document.getElementById("delete").disabled=false;
+					document.getElementById("prev").disabled=false;
+					document.getElementById("next").disabled=false;
+				}
+			}
+			
+			xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "trash" +"&page=" + cur_trash, true);
+			xmlhttp.send();
+		}
+		
+		function next_5(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+				}
+			}
+			if (inbox){
+				cur_inbox += 5;
+				xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "inbox" +"&page=" + cur_inbox, true);
+				xmlhttp.send();
+			}else if (important){
+				cur_imp += 5;
+				xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "important" +"&page=" + cur_imp, true);
+				xmlhttp.send();
+			}else{
+				cur_trash += 5;
+				xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "trash" +"&page=" + cur_trash, true);
+				xmlhttp.send();
+			}
+		}
+		
+		function prev_5(){
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+				}
+			}
+			if (inbox){
+				if (cur_inbox >= 5){
+					cur_inbox -= 5;
+					xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "inbox" +"&page=" + cur_inbox, true);
+					xmlhttp.send();
+					}
+			}else if (important){
+				if (cur_imp >= 5){
+					cur_imp -= 5;
+					xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "important" +"&page=" + cur_imp, true);
+					xmlhttp.send();
+				}
+			}else{
+				if (cur_trash >= 5){
+					cur_trash -= 5;
+					xmlhttp.open("GET","handleEmailDisplay.php? cur_disp=" + "trash" +"&page=" + cur_trash, true);
+					xmlhttp.send();
+				}
+			}
+		}
+		
+		function openmail(id){
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					xmlDoc=xmlhttp.responseText;
+					document.getElementById("email").innerHTML = "";
+					document.getElementById("email").innerHTML += xmlDoc;
+					document.getElementById("move_inbox").disabled=true;
+					document.getElementById("move_imp").disabled=true;
+					document.getElementById("delete_forever").disabled=true;
+					document.getElementById("delete").disabled=true;
+					document.getElementById("prev").disabled=true;
+					document.getElementById("next").disabled=true;
+				}
+			}
+			xmlhttp.open("GET","handleContentRequest.php? id="+id, true);
+			xmlhttp.send();
+			
+		}
+		
+		function move(box){
+			var checked = [];
+			get = document.getElementsByTagName("input");
+			var xmlhttp;
+			if (window.XMLHttpRequest){
+				xmlhttp = new XMLHttpRequest();
+			}else{
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange=function(){
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+					if (inbox == true)
+						show_in();
+					else if (trash == true)
+						show_trash();
+					else
+						show_imp();
+				}
+			}
+			for (var i=0; i < get.length; i++){
+				if (get[i].checked){
+					checked[i]=get[i].id;
+					}
+				else{
+					checked[i] = 0;
+					}
+			}
+			xmlhttp.open("GET","handleMailboxChange.php? id1="+checked[0]+"&id2="+checked[1]+"&id3="+checked[2]+"&id4="+checked[3]+"&box="+box, true);
+			xmlhttp.send();
+		}
+
+	</script>
+</html>

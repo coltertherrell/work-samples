@@ -1,0 +1,14 @@
+#myCanvas
+{
+	background-image:url("background.jpg");
+}
+
+body
+{
+	background-color:#000000;
+}
+
+#pictures
+{
+	visibility:hidden;
+}
