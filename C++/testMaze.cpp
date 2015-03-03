@@ -1,6 +1,6 @@
 /*
 *Author: Sam Vitello
-*
+*CIS 330 Assignment 4
 *
 *Main function to run maze.cpp
 */

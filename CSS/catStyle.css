@@ -1,0 +1,319 @@
+/*
+Author: Sam Vitello
+*/
+
+
+/*--------------------------------------------------Catalog-------------------------------------*/
+.catHead {
+	list-style-type:none; 
+	float:center;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+
+.catList {
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+	color:#493b22;
+	
+	
+}
+
+.catList:hover {
+	background:#9D927D;
+}
+
+.catList-active {
+	cursor: pointer;
+	cursor: hand;
+	font-weight: bold;
+}
+
+.navList {
+	cursor: pointer;
+	cursor: hand;
+	
+	
+}
+
+#logoImage {
+	margin-left:12%;
+	margin-top:10px;
+
+}
+
+#navItem{
+	display:inline-block;
+	margin-right:20px;
+	text-decoration: none;
+	font-size:1.1em;
+	font-weight:700;
+	
+}
+
+#navItem:hover{
+	background:none;
+}
+
+#order-container{
+	margin-left:250px;
+	height:auto;
+	width:auto;
+	overflow-x:hidden;
+
+}
+
+#prod{
+	position:relative;
+	float:left;
+	width:100%;
+
+}
+
+#add-to-cart{
+	margin-left:0%;
+	margin-right:auto;
+}
+
+#next-button {
+	position:relative;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+#prev-button {
+		position:relative;
+		margin-top:20px;
+		margin-bottom:20px;
+		margin-left:20px;
+		margin-right:auto;
+	}
+
+#shopping_cart{
+	position:relative;
+	left:90%;
+	top:22%;
+	z-index:5;
+
+}
+
+.cat_img {
+	width:80px;
+	height:80px;
+	height:auto;
+	display: inline;
+	margin-left:20px;
+}
+
+.catIn{
+	display:inline;
+	position:relative;
+	vertical-align:center;
+}
+
+.cat_info {
+	display:inline;
+	position: relative;
+	font-size:15px;
+	vertical-align:center;
+
+}
+
+.cat-row{
+	height:100px;
+	border-bottom:1px solid #ADADAA;
+	margin-top:10px;
+}
+
+#prod {
+	position:relative;
+	margin-top:25px;
+
+}
+
+#divider {
+	position:relative;
+	height:50px;
+	width:100%;
+}
+
+#add-to-cart {
+	position:relative;
+	margin-top:20px;
+	margin-left:20px;
+	margin-right:auto;
+	width:150px;
+	height:50px;
+	background:#FFB870;
+	color:white;
+	
+}
+/*--------------------------------------------------Checkout-------------------------------------*/
+
+#checkout_tbl {
+	width:70%; 
+    margin-left:auto; 
+    margin-right:auto;
+	margin-top:50px;
+	margin-bottom:50px;
+	border:2px solid black;
+	position:relative;
+	overflow-x:hidden;
+}
+
+#cart_row {
+	position:relative;
+	outline:thin solid black;
+}
+#cart_row td {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+.edit_item {
+	position:relative;
+	display:inline-block;
+	border-right:1px solid black;
+}
+
+.cart_name {
+	position:relative;
+	display:inline-block;
+	left:10%;
+	font-weight: bold;
+}
+
+.cart_amt {
+	position:absolute;
+	display:inline-block;
+	left:25%;
+}
+
+.chk_btn {
+	position:relative;
+	background-color:#FFB870;
+	width:100px;
+	height:50px;
+	margin-right:auto;
+	margin-left:100px;
+	margin-bottom:150px;
+	
+}
+
+/*****************************************************Sidebar Action*************************************/
+#sidebar-wrapper {
+    z-index: 1000;
+    position: absolute;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+	
+    overflow-y: auto;
+	overflow-x:hidden;
+    background: #E0D1B2;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/******************************************************** Sidebar Styles ********************************/
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+	
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+.sidebar-brand {
+	background:#9D927D;
+	border-bottom:2px solid #493b22;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+body{
+	overflow-x:hidden;
+}
