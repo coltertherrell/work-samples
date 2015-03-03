@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Classes - Deep Dive Scuba Shop</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+
+				<div id="navigation">
+					<ul>
+						<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li class="selected">
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents">
+				<div class="box">
+					<div>
+						<div class="body">
+							<h1>Padi Courses</h1>
+							<h2>We Have Padi Certification Courses and Fun dives for Everyone</h2>
+							<p>
+								Our Dive Shop offers PADI certification courses for Divers of all skill levels. New to Scuba Diving? Check out our Open Water Diver certification classes. For all divers that are Open Water certified we also offer fun dives for a discounted price. Use our search features below to find the right class for you!
+							</p>
+							
+							<hr>
+							<div>
+								<p>Select Class</p>
+								<select id="course" onchange="get_classes(this.value)">
+									<option></option>
+									<option value="fun">Fun</option>
+									<option value="open">PADI Open Water</option>
+									<option value="advanced">PADI Advanced Open Water</option>
+									<option value="deep">PADI Deep Dive</option>
+									<option value="divemaster">PADI Divemaster</option>
+								</select>
+							</div>
+							<br>
+							<br>
+							<table id="class_tbl">
+								
+								<tbody id="results">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<br>
+					<div style="padding-top:20px; padding-bottom:20px; padding-right:20px;">
+						<a style="padding-right:20px;" href="files/classes.txt">Click here to see classes.html source</a>
+						<a style="padding-right:20px;" href="files/getClasses.txt">Click here to see getClasses.php source</a>
+					</div>
+				<br>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul class="navigation">
+					<li class="selected">
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+				</ul>
+				
+			</div>
+			<p>
+				© 2014 by DEEP DIVE SCUBA DIVE. All Rights Reserved
+			</p>
+		</div>
+	</div>
+</body>
+<script>
+	function get_classes(cls){
+		$("#results").html("");
+		$.ajax({
+			url : "php/getClasses.php",
+			type : "GET",
+			data : {"class" : cls},
+			success: function(result){
+				$("#results").append("<tr><td><p>CLASS</p></td><td><p>DATE</p></td><td><p>LOCATION</p></td><td><p>COST</p></td></tr>")
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+	}
+
+</script>
+</html>

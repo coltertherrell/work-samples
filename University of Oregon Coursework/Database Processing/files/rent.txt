@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Rent - Deep Dive Scuba Shop</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+
+				<div id="navigation">
+					<ul>
+						<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li class="selected">
+							<a href="rent.html">Rent</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents">
+				<div class="box">
+					<div>
+						<div class="body">
+							<h1>Rent Equipment</h1>
+							<br>
+							<div id="rent_menu">
+							<p id="avail"><b>Available</b></p>
+							<p id="search"><b>Search</b></p>
+							</div>
+							
+							<br>
+							<div id="search_bar">
+								<label for="type">Equipment Type</label>
+								<select id="type" >
+									<option></option>
+									<option value="bcd">BCD</option>
+									<option value="regulator">Regulator</option>
+									<option value="wetsuit">Wetsuit</option>
+									<option value="mask">Mask</option>
+									<option value="tank">Tank</option>
+									
+								</select>
+								<label for="date_out">Date Out</label>
+								<input type="date" id="date_out" value="YYYY-MM-DD">
+								<label for="date_in">Date In</label>
+								<input type="date" id="date_in" value="YYYY-MM-DD">
+								<p id="searchDate">SEARCH</p>
+								</table>
+							</div>
+							
+							<br>
+						
+							<table id="rent_tbl">
+								<tr>
+									<td>
+									Number
+									</td>
+									<td>
+									Type
+									</td>
+									<td>
+									Size
+									</td>
+									<td>
+									Condition
+									</td>
+									<td>
+									Available Until
+									</td>
+									<td>
+									Price Per Week
+									</td>
+								</tr>
+								<tbody id="results">
+							
+							
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<br>
+					<div style="padding-top:20px; padding-bottom:20px; padding-right:20px;">
+						<a style="padding-right:20px;" href="files/rent.txt">Click here to see rent.html source</a>
+						<a style="padding-right:20px;" href="files/getAvailable.txt">Click here to see getAvailable.php source</a>
+						<a style="padding-right:20px;" href="files/searchEquip.txt">Click here to see searchEquip.php source</a>
+					</div>
+				<br>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul class="navigation">
+					<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li class="selected">
+							<a href="rent.html">Rent</a>
+						</li>
+				</ul>
+				
+			</div>
+			<p>
+				© 2014 by DEEP DIVE SCUBA DIVE. All Rights Reserved
+			</p>
+		</div>
+	</div>
+</body>
+<script>
+
+$(document).ready(function(){
+	$("#search_bar").hide();
+	
+	$("#avail").click(function(){
+		$("#results").html("")
+		$("#search_bar").hide();
+		$.ajax({
+			url : "php/getAvailable.php",
+			success: function(result){
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+	});
+	
+	$("#search").click(function(){
+		$("#search_bar").show();
+	});
+	
+	$("#searchDate").click(function(){
+		$("#results").html("")
+		var type = $("#type").val();
+		var dt_in = String($("#date_in").val());
+		var dt_out = String($("#date_out").val());
+		
+		$.ajax({
+			url : "php/searchEquip.php",
+			type : "GET",
+			data : {"type" : type, "date_in" : dt_in, "date_out" : dt_out},
+			success: function(result){
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+	});
+
+});
+
+</script>
+
+
+
+
+
+</html>

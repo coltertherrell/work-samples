@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Dive Sites - Bhaccasyoniztas Beach Resort Website Template</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+
+				<div id="navigation">
+					<ul>
+						<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li class="selected">
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents">
+				<div class="box">
+					<div>
+						<div class="body">
+						<h2>Search For the Perfect Dive Site</h2>
+						<br>
+							<div id="site_menu">
+							<p id="site"><b>Search By Site Characteristics</b></p>
+							<p id="wild"><b>Search By Wildlife</b></p>
+							</div>
+						
+							<div id="site_search">
+							<table id="dive_tbl">
+							<tr>
+								<td>
+									<p>Max Distance (mi)</p>
+								</td>
+								<td>
+									<p>Max Depth (ft)</p>
+								</td>
+								<td>
+									<p>Min Water Temp (F)</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input id="dist" type="text" ></input>
+								</td>
+								<td>
+									<input id="depth" type="text"></input>
+								</td>
+								<td>
+									<input id="temp" type="text"></input>
+								</td>
+								<td>
+									<p id="searchSite">SEARCH</p>
+								</td>
+							</tr>
+							</table>
+							</div>
+								
+							<div id="wild_search">
+							<table id="dive_tbl">
+								<tr>
+									<td>
+										Wildlife
+									</td>
+								</tr>
+								<tr>
+								<td>
+									<select onchange="get_sites(this.value)">
+										<option></option>
+										<option value="barracuda">Barracuda</option>
+										<option value="clown fish">Clown Fish</option>
+										<option value="rockfish">Copper Rockfish</option>
+										<option value="crab">Crabs</option>
+										<option  value="lionfish">Lionfish</option>
+										<option value="octopus">Octopus</option>
+										<option value="pipefish">Pipefish</option>
+										<option value="shark">Sharks</option>
+										<option value="tuna">Tuna</option>
+										<option value="zebrafish">Zebrafish</option>
+									</select>
+								</td>
+								</tr>
+							</table>
+							</div>
+							
+							<br>
+							<table id="site_tbl">
+								<tr>
+									<td>
+										NAME
+									</td>
+										
+									<td>
+										DISTANCE
+									</td>
+									<td>
+										DEPTH
+									</td>
+									<td>
+										TEMP
+									</td>
+								</tr>
+								<tbody id="results">
+								</tbody>
+							</table>
+						</div>
+						
+					</div>
+					<br>
+					<div style="padding-top:20px; padding-bottom:20px; padding-right:20px;">
+						<a style="padding-right:20px;" href="files/dives.txt">Click here to see dives.html source</a>
+						<a style="padding-right:20px;" href="files/getSites.txt">Click here to see getSites.php source</a>
+						<a style="padding-right:20px;" href="files/getSitesByWild.txt">Click here to see getSitesByWild.php source</a>
+					</div>
+				<br>
+				</div>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul class="navigation">
+					<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li class="active">
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+				</ul>
+			</div>
+			<p>
+				© 2023 by BHACCASYONIZTAS BEACH RESORT. All Rights Reserved
+			</p>
+		</div>
+	</div>
+</body>
+<script>
+	$(document).ready(function(){
+		$("#site_search").hide();
+		$("#wild_search").hide();
+		
+		$("#site").click(function(){
+			$("#wild_search").hide();
+			$("#site_search").show();
+		})
+		
+		$("#wild").click(function(){
+			$("#wild_search").show();
+			$("#site_search").hide();
+		})
+		
+		$("#searchSite").click(function(){
+			
+			var distance = $("#dist").val();
+			var depth = $("#depth").val();
+			var temp = $("#temp").val();
+			
+			
+			if (distance.length == 0)
+				distance = 100000;
+			else
+				distance = parseInt(distance);
+			if (temp.length == 0)
+				temp = -100000;
+			else
+				temp = parseInt(temp);
+			if (depth.length == 0)
+				depth = 100000;
+			else
+				depth = parseInt(depth);
+				
+			$("#results").html("");
+			
+			$.ajax({
+			url : "php/getSites.php",
+			type : "GET",
+			data : {"dist" : distance, "temp" : temp, "depth" : depth},
+			success: function(result){
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+			
+		
+		})
+	});
+</script>
+<script>
+	function get_sites(wild){
+		$("#results").html("");
+		$.ajax({
+			url : "php/getSitesByWild.php",
+			type : "GET",
+			data : {"wild" : wild},
+			success: function(result){
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+	}
+
+</script>
+
+</html>

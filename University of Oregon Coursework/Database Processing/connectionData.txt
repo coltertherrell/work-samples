@@ -1,0 +1,9 @@
+<?php
+
+$server = "ix.cs.uoregon.edu";
+$dbname ="DeepDive";
+$user = "svitello";
+$pass = "Goducks35";
+$port="3536";
+
+?>

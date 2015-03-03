@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Staff - Deep Dive Scuba Shop</title>
+	<link rel="stylesheet" href="css/style.css" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+	<div id="background">
+		<div id="page">
+			<div id="header">
+
+				<div id="navigation">
+					<ul>
+						<li >
+							<a href="index.html">Home</a>
+						</li>
+						<li >
+							<a href="classes.html">Classes</a>
+						</li>
+						<li class="selected">
+							<a href="staff.html" class="selected">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="contents">
+				<div class="box">
+					<div>
+						<div class="body">
+							<h1>Deep Dive Staff</h1>
+							<p>
+								We Have a great staff of professionally trained Instructors. Use the search below to find staff that fit your certification requirements!
+							</p>
+							
+							<hr>
+							<div>
+								<p>Select Certification</p>
+								<select id="staff" onchange="get_instr(this.value)">
+									<option></option>
+									<option value="divemaster">PADI Divemaster</option>
+									<option value="master">Master Instructor</option>
+									<option value="director">Diving Director</option>
+								</select>
+							</div>
+							<br>
+							<br>
+							<table id="instr_tbl">
+								<tr>
+									<td>
+										Name
+									</td>
+									
+									<td>
+										Certification
+									</td>
+								</tr>
+								<tbody id="results">
+									
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<br>
+					<div style="padding-top:20px; padding-bottom:20px; padding-right:20px;">
+						<a style="padding-right:20px;" href="files/staff.txt">Click here to see staff.html source</a>
+						<a href="files/getStaff.txt">Click here to see getStaff.php source</a>
+					</div>
+				<br>
+			</div>
+		</div>
+		<div id="footer">
+			<div>
+				<ul class="navigation">
+					<li class="selected">
+							<a href="index.html">Home</a>
+						</li>
+						<li>
+							<a href="classes.html">Classes</a>
+						</li>
+						<li>
+							<a href="staff.html">Staff</a>
+						</li>
+						<li>
+							<a href="dives.html">Dive Sites</a>
+						</li>
+						<li>
+							<a href="rent.html">Rent</a>
+						</li>
+					
+				</ul>
+				
+			</div>
+			<p>
+				© 2014 by DEEP DIVE SCUBA DIVE. All Rights Reserved
+			</p>
+		</div>
+	</div>
+</body>
+<script>
+	function get_instr(cls){
+		$("#results").html("");
+		$.ajax({
+			url : "php/getStaff.php",
+			type : "GET",
+			data : {"staff" : cls},
+			success: function(result){
+				$("#results").append(result);
+			},
+			error: function(result){
+				$("#results").append(result)
+			}
+		});
+	}
+
+</script>
+</html>
